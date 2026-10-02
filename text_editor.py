@@ -17,18 +17,18 @@ def open_file():
         text = input_file.read()
         txt_edit.insert(END, text)
         input_file.close()
-        window.title(f'My text editor' - {filepath})
+        window.title(f'My text editor - {filepath}')
 def save_file():
     filepath = asksaveasfilename(
-        defaultextension = 'txt',
-        filetypes= [('Text files', '*.txt'), ('All Files'), '*.*'],
+        defaultextension = '.txt',
+        filetypes= [('Text files', '*.txt'), ('All Files', '*.*')],
     )
     if not filepath:
         return
     with open(filepath, 'w') as output_file:
         text = txt_edit.get(1.0, END)
         output_file.write(text)
-    window.title(f'My text editor - [filepath]')
+    window.title(f'My text editor - {filepath}')
 txt_edit = Text(window)
 fr_buttons = Frame(window, relief=RAISED, bd = 2)
 btn_open = Button(fr_buttons, text = 'Open', command=open_file)
